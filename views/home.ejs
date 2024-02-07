@@ -37,7 +37,7 @@
                <img src="<%= event.image %>" class="event__img" alt="" />
 
                <div class="event__thumbnail-overlay">
-                  <span class="event__tag"><%= event.startDate %></span>
+                  <span class="event__tag"><%= event.startDateFormated %></span>
                   <% if (!cart[event.id] && !ordered[event.id] && new Date(event.startDate) > new Date(Date.now())) { %>
                   <form action="/events/<%= event.id %>/cart" method="post">
                      <button type="submit" class="event__tag">
