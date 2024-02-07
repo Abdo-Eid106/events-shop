@@ -1,0 +1,44 @@
+<main class="main sm:mb-14">
+   <h1 class="text-center text-2xl font-semibold tracking-wide sm:text-4xl">
+      Reset your password
+   </h1>
+   <p class="mb-14 mt-2 text-center">
+      Enter the code sent to you via email
+   </p>
+
+   <form method="POST" class="mx-auto w-full max-w-lg space-y-12" id="form">
+      <div class="flex items-center justify-center gap-6">
+         <input type="text"
+            class="h-14 w-14 rounded-2xl bg-primary-900 bg-opacity-20 text-center text-xl outline-none focus:border-primary-900"
+            id="input1" maxlength="1" />
+         <input type="text"
+            class="h-14 w-14 rounded-2xl bg-primary-900 bg-opacity-20 text-center text-xl outline-none focus:border-primary-900"
+            id="input2" maxlength="1" disabled />
+         <input type="text"
+            class="h-14 w-14 rounded-2xl bg-primary-900 bg-opacity-20 text-center text-xl outline-none focus:border-primary-900"
+            id="input3" maxlength="1" disabled />
+         <input type="text"
+            class="h-14 w-14 rounded-2xl bg-primary-900 bg-opacity-20 text-center text-xl outline-none focus:border-primary-900"
+            id="input4" maxlength="1" disabled />
+         <input type="hidden" name="otp" id="otp">
+      </div>
+      <% if (typeof msg != 'undefined') { %>
+      <p>
+         <span class="text-xs text-center font-bold text-stone-500">
+            <%= msg %>
+         </span>
+      </p>
+      <% } %>
+      <button id="submitBtn" type="submit"
+         class="block h-[55px] w-full rounded-full border-none bg-primary-900 font-bold text-primary-100 outline-none transition-colors hover:bg-primary-900/75 disabled:bg-primary-900/50">
+         Confirm
+      </button>
+   </form>
+
+   <p class="mt-4 text-center text-sm font-bold capitalize text-stone-900">
+      <button type="button" class="text-primary-900 hover:underline">
+         Resend the code
+      </button>
+   </p>
+</main>
+<script src="/assets/scripts/otp.js"></script>

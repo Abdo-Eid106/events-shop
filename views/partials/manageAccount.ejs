@@ -1,0 +1,28 @@
+<div class="w-full sm:max-w-[175px]">
+   <div class="mb-8">
+      <p class="mb-4 font-semibold text-black">Manage My Account</p>
+      <ul class="space-y-3 ps-8">
+         <li>
+            <a href="/profile" <% if (path == '/profile') { %> aria-current="true" <% } %>
+               class="text-black text-opacity-40 transition-colors hover:text-opacity-80 aria-[current]:pointer-events-none aria-[current]:text-primary-900 aria-[current]:text-opacity-100">My
+               Profile</a>
+         </li>
+         <li>
+            <a href="/orders" <% if (path == '/orders') { %> aria-current="true" <% } %>
+               class="text-black text-opacity-40 transition-colors hover:text-opacity-80 aria-[current]:pointer-events-none aria-[current]:text-primary-900 aria-[current]:text-opacity-100">My
+               Orders</a>
+         </li>
+         <li>
+            <a href="/payments" <% if (path == '/payments') { %> aria-current="true" <% } %>
+               class="text-black text-opacity-40 transition-colors hover:text-opacity-80 aria-[current]:pointer-events-none aria-[current]:text-primary-900 aria-[current]:text-opacity-100">My
+               Payment history</a>
+         </li>
+      </ul>
+   </div>
+
+   <form action="/logout" method="post">
+      <button type="submit" class="text-secondary-900 transition-colors hover:text-opacity-65">
+         Logout
+      </button>
+   </form>
+</div>

@@ -1,0 +1,128 @@
+<script src="https://js.stripe.com/v3/"></script>
+<main class="main">
+   <ol class="mb-8 flex items-center whitespace-nowrap sm:mb-12" aria-label="Breadcrumb">
+      <li class="inline-flex items-center">
+         <a class="flex items-center text-xl font-semibold text-primary-900 text-opacity-60 sm:text-4xl" href="/events">
+            Events
+         </a>
+         <svg class="h-6 w-6 flex-shrink-0 sm:h-10 sm:w-10" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 13L10 3" stroke="currentColor" stroke-linecap="round" />
+         </svg>
+      </li>
+      <li class="inline-flex items-center truncate text-xl font-semibold text-primary-900 sm:text-4xl"
+         aria-current="page">
+         Book now
+      </li>
+   </ol>
+
+   <div class="grid grid-cols-1 items-start gap-10 sm:grid-cols-2 sm:gap-20">
+      <div
+         class="space-y-6 rounded-3xl bg-stone-500 bg-opacity-10 p-6 mix-blend-multiply backdrop-blur-sm sm:space-y-12 sm:rounded-[50px] sm:p-14 sm:pb-20">
+         <h2 class="text-center text-2xl font-extrabold text-zinc-950 sm:text-5xl">
+            Summary
+         </h2>
+
+         <div class="space-y-4 sm:space-y-6">
+            <% for (const event of events) { %>
+            <div class="flex items-end">
+               <div class="flex-1">
+                  <p class="mb-2 text-xl font-medium leading-tight sm:text-2xl">
+                     <%= event.name %>
+                  </p>
+                  <p class="max-w-36 truncate font-light leading-tight text-black sm:max-w-72">
+                     <%= event.description %>
+                  </p>
+               </div>
+
+               <p class="text-2xl font-medium text-black">$ <%= event.price %></p>
+            </div>
+            <% } %>
+         </div>
+
+         <div class="flex items-center justify-between border-t border-neutral-300 pt-6">
+            <p class="text-xl font-bold text-zinc-950 sm:text-2xl">Total</p>
+            <p class="text-xl font-medium text-zinc-950 sm:text-2xl">
+               $ <%= total %>
+            </p>
+         </div>
+      </div>
+
+      <div class="space-y-6">
+         <p class="border-b border-primary-900 border-opacity-50 pb-4 text-2xl font-bold leading-7 text-zinc-950">
+            Payment
+         </p>
+         <div>
+            <button id="stripe" type="submit"
+               class="block h-[55px] w-full rounded-full border-none bg-primary-900 font-bold text-primary-100 outline-none transition-colors hover:bg-primary-900/75 disabled:bg-primary-900/50">
+               Pay
+            </button>
+         </div>
+
+         <div id="transfer" class="hidden space-y-6 sm:space-y-8">
+            <div class="mb-8 text-center">
+               <p class="mb-3 text-lg font-bold leading-3 text-zinc-950">
+                  Iban
+               </p>
+               <div class="flex items-start justify-center gap-2">
+                  <p id="text-1" class="text-2xl font-light leading-7 text-zinc-950 text-opacity-50">
+                     0123456781
+                  </p>
+                  <button type="button" class="js-clipboard" data-clipboard-target="#text-1"
+                     data-clipboard-action="copy">
+                     <svg class="h-4 w-4">
+                        <use href="./assets/images/icons/sprite.svg#copy"></use>
+                     </svg>
+                  </button>
+               </div>
+            </div>
+
+            <div class="text-center">
+               <p class="mb-3 text-lg font-bold leading-3 text-zinc-950">
+                  elriyad Bank
+               </p>
+               <div class="flex items-start justify-center gap-2">
+                  <p id="text-2" class="text-2xl font-light leading-7 text-zinc-950 text-opacity-50">
+                     0123456781
+                  </p>
+                  <button type="button" class="js-clipboard" data-clipboard-target="#text-2"
+                     data-clipboard-action="copy">
+                     <svg class="h-4 w-4">
+                        <use href="./assets/images/icons/sprite.svg#copy"></use>
+                     </svg>
+                  </button>
+               </div>
+            </div>
+
+            <div>
+               <p class="mb-3 text-center text-lg font-bold text-zinc-950">
+                  Payment verification
+               </p>
+
+               <label
+                  class="flex h-[156px] flex-col items-center justify-center gap-2 rounded-[22px] border border-dashed border-stone-500">
+                  <svg class="h-6 w-6">
+                     <use href="./assets/images/icons/sprite.svg#upload"></use>
+                  </svg>
+
+                  Upload
+
+                  <input type="file" class="sr-only" />
+               </label>
+            </div>
+
+            <div>
+               <button type="button"
+                  class="mb-4 block h-[55px] w-full rounded-full border-none bg-primary-900 font-bold text-primary-100 outline-none transition-colors hover:bg-primary-900/75 disabled:bg-primary-900/50">
+                  Confrm Payment
+               </button>
+
+               <span class="inline-block text-sm font-normal leading-snug text-stone-900 text-opacity-50">After
+                  successfully making the bank transfer, please confirm
+                  and upload a copy of the transfer</span>
+            </div>
+         </div>
+      </div>
+   </div>
+</main>
+<script src="/assets/scripts/stripe.js"></script>

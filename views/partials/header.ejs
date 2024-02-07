@@ -1,0 +1,50 @@
+<header class="header">
+   <nav class="navbar wrapper" aria-label="Global">
+      <img src="/assets/images/logo.png" class="w-40" alt="" />
+
+      <div class="flex items-center gap-x-2 sm:order-3">
+         <% if (typeof user == 'undefined') { %>
+         <div class="me-6 hidden items-center pt-1 sm:flex">
+            <a href="/signin" class="navbar__link me-4 border-e border-white pe-4 leading-none"
+               <% if (path == '/signin') { %> aria-current <% } %>>Sign in</a><a href="/signup"
+               class="navbar__link leading-none" <% if (path == '/signup') { %> aria-current <% } %>>Sign up</a>
+         </div>
+         <% } else { %>
+         <div class="me-3 flex items-center gap-3 sm:me-0">
+            <a href="/profile">
+               <svg class="navbar__icon">
+                  <use href="/assets/images/icons/sprite.svg#account"></use>
+               </svg>
+            </a>
+            <a href="/cart">
+               <svg class="navbar__icon">
+                  <use href="/assets/images/icons/sprite.svg#shopping-cart"></use>
+               </svg>
+            </a>
+         </div>
+         <% } %>
+
+         <button type="button"
+            class="hs-collapse-toggle inline-flex items-center justify-center gap-x-2 rounded-lg sm:hidden"
+            data-hs-collapse="#navbar-menu" aria-controls="navbar-menu" aria-label="Toggle navigation">
+            <svg class="h-8 w-8 flex-shrink-0 hs-collapse-open:hidden">
+               <use href="/assets/images/icons/sprite.svg#menu"></use>
+            </svg><svg class="hidden h-7 w-7 flex-shrink-0 hs-collapse-open:block">
+               <use href="/assets/images/icons/sprite.svg#x"></use>
+            </svg>
+         </button>
+      </div>
+
+      <div id="navbar-menu"
+         class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 sm:order-2 sm:block sm:grow-0 sm:basis-auto">
+         <div class="mt-5 flex flex-col gap-5 sm:mt-0 sm:flex-row sm:items-center sm:gap-7">
+            <% if (typeof user != 'undefined') { %>
+            <a href="/" class="navbar__link" <% if (path == '/') { %> aria-current <% } %>>Home</a>
+            <a href="/events" class="navbar__link" <% if (path.startsWith('/events')) { %> aria-current
+               <% } %>>Events</a>
+            <% } %>
+            <a href="/contact" class="navbar__link" <% if (path == '/contact') { %> aria-current <% } %>>Contact Us</a>
+         </div>
+      </div>
+   </nav>
+</header>

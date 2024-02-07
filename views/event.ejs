@@ -1,0 +1,48 @@
+<main class="main max-w-[863px]">
+   <ol class="mb-8 flex items-center whitespace-nowrap sm:mb-12" aria-label="Breadcrumb">
+      <li class="inline-flex items-center">
+         <a class="flex items-center text-xl font-semibold text-primary-900 text-opacity-60 sm:text-4xl" href="/">
+            Home
+         </a>
+         <svg class="h-6 w-6 flex-shrink-0 sm:h-10 sm:w-10" width="16" height="16" viewBox="0 0 16 16" fill="none"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 13L10 3" stroke="currentColor" stroke-linecap="round" />
+         </svg>
+      </li>
+      <li class="inline-flex items-center truncate text-xl font-semibold text-primary-900 sm:text-4xl"
+         aria-current="page">
+         upcommimg events
+      </li>
+   </ol>
+
+   <div class="flex flex-col items-center gap-8 sm:flex-row">
+      <div class="w-full max-w-[296px] shrink-0">
+         <div class="overflow-hidden rounded-tl-[113px] rounded-tr-[113px]">
+            <img src="<%= event.image %>" class="max-h-[318px] w-full origin-center object-cover" alt="" />
+            <p class="bg-primary-900 px-4 pb-14 pt-6 text-center text-2xl text-primary-100 sm:text-4xl">
+               <%= event.name %>
+            </p>
+         </div>
+      </div>
+
+      <div class="w-full sm:flex-1">
+         <div class="mb-12 space-y-3">
+            <h2 class="text-2xl font-medium leading-tight"><%= event.name %></h2>
+            <p class="max-w-[50ch] font-light text-black text-opacity-75">
+               <%= event.description %>
+            </p>
+            <p class="text-sm leading-tight"><%= event.city %>, <%= event.country %></p>
+            <p class="text-sm leading-tight"><%= event.startDateFormated %></p>
+         </div>
+         <% if (canBook) { %>
+         <% if (event.membersCount < event.maxMembers && new Date(event.startDate) > new Date(Date.now())) { %>
+         <form action="/events/<%= event.id %>/cart" method="post">
+            <button type="submit" class="event__btn">Book now</button>
+         </form>
+         <% } else { %>
+         <p class="event__btn">Expired</p>
+         <% } %>
+         <% } %>
+      </div>
+   </div>
+</main>

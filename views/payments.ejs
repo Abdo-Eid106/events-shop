@@ -1,0 +1,41 @@
+<main class="main">
+   <%- include('partials/profileHeader.ejs', { path }) %>
+   <div class="flex flex-col justify-between gap-10 sm:flex-row sm:gap-20">
+      <%- include('partials/manageAccount', { path }) %>
+
+      <div class="mx-auto w-full sm:max-w-[645px]">
+         <div class="flex flex-col">
+            <div class="-m-1.5 overflow-x-auto">
+               <div class="inline-block min-w-full p-1.5 align-middle">
+                  <div class="overflow-hidden">
+                     <table class="min-w-full">
+                        <thead class="rounded-lg bg-primary-900 bg-opacity-10">
+                           <tr>
+                              <th scope="col" class="px-4 py-3 text-start text-sm font-medium text-primary-900">
+                                 Date
+                              </th>
+                              <th scope="col" class="px-4 py-3 text-end text-sm font-medium text-primary-900">
+                                 price
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody class="divide-y divide-primary-900">
+                           <% for (const payment of payments) { %>
+                           <tr>
+                              <td class="whitespace-nowrap px-4 py-4 text-start text-sm text-neutral-800">
+                                 <%= payment.paymentDate %>
+                              </td>
+                              <td class="whitespace-nowrap px-4 py-4 text-end text-sm text-neutral-800">
+                                 <%= payment.price %>$
+                              </td>
+                           </tr>
+                           <% } %>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</main>

@@ -1,0 +1,63 @@
+<nav class="mt-8 flex items-center justify-center gap-x-2.5 sm:justify-end">
+   <a href="<%= path %>?page=<%= Math.max(page - 1, 1) %>">
+      <button type="button" <% if (page == 1) { %> disabled <% } %>
+         class="inline-flex h-[40px] w-[40px] items-center justify-center gap-x-2 rounded-full border border-primary-900 px-2.5 py-2 text-sm text-primary-900 hover:bg-primary-900 hover:text-white">
+         <svg class="h-4 w-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+         </svg>
+         <span aria-hidden="true" class="sr-only">Previous</span>
+      </button>
+   </a>
+   <div class="flex items-center gap-x-2.5">
+      <% if (page > 2) { %>
+      <a href="<%= path %>?page=1">
+         <button type="button"
+            class="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-primary-900 px-3 pt-0.5 text-sm leading-none text-primary-900 hover:bg-primary-900 hover:text-white aria-[current]:bg-primary-900 aria-[current]:text-white">
+            1
+         </button>
+      </a>
+      <% } %>
+      <% if (page > 1) { %>
+      <a href="<%= path %>?page=<%= page - 1 %>">
+         <button type="button"
+            class="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-primary-900 px-3 pt-0.5 text-sm leading-none text-primary-900 hover:bg-primary-900 hover:text-white aria-[current]:bg-primary-900 aria-[current]:text-white">
+            <%= page - 1 %>
+         </button>
+      </a>
+      <% } %>
+      <button type="button"
+         class="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-primary-900 px-3 pt-0.5 text-sm leading-none text-primary-900 hover:bg-primary-900 hover:text-white aria-[current]:bg-primary-900 aria-[current]:text-white"
+         aria-current="page">
+         <%= page %>
+      </button>
+      <% if (page < pages) { %>
+      <a href="<%= path %>?page=<%= page + 1 %>">
+         <button type="button"
+            class="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-primary-900 px-3 pt-0.5 text-sm leading-none text-primary-900 hover:bg-primary-900 hover:text-white aria-[current]:bg-primary-900 aria-[current]:text-white">
+            <%= page + 1 %>
+         </button>
+      </a>
+      <% } %>
+      <% if (page + 2 <= pages) { %>
+      <a href="<%= path %>?page=<%= pages %>">
+         <button type="button"
+            class="flex h-[40px] w-[40px] items-center justify-center rounded-full border border-primary-900 px-3 pt-0.5 text-sm leading-none text-primary-900 hover:bg-primary-900 hover:text-white aria-[current]:bg-primary-900 aria-[current]:text-white">
+            <%= pages %>
+         </button>
+      </a>
+      <% } %>
+   </div>
+   <a href="<%= path %>?page=<%= Math.min(page + 1, pages) %>">
+      <button type="button" <% if (page == pages) { %> disabled <% } %>
+         class="inline-flex h-[40px] w-[40px] items-center justify-center rounded-full border border-primary-900 px-2.5 py-2 text-sm text-primary-900 hover:bg-primary-900 hover:text-white aria-[current]:bg-primary-900 aria-[current]:text-white">
+         <span aria-hidden="true" class="sr-only">Next</span>
+         <svg class="h-4 w-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6" />
+         </svg>
+      </button>
+   </a>
+</nav>
